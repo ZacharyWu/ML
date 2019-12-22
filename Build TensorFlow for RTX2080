@@ -4,7 +4,7 @@ tensorflow_gpu-1.14.0	2.7, 3.3-3.7	GCC 4.8	Bazel 0.24.1	7.4	10.0
 tensorflow_gpu-1.13.1	2.7, 3.3-3.7	GCC 4.8	Bazel 0.19.2	7.4	10.0
 
 
-1 Install CUDA 10.0 + cuDNN 7.3.1(7.4.2) + NCCL default version + TensorFlow 1.13 + Python2.7
+1 Install CUDA 10.0 + cuDNN 7.4.2 + NCCL default version + TensorFlow 1.13.2 + Python3.6
 
 using Python3 and pip3
 ---updated: 2019.8.11
@@ -57,7 +57,7 @@ cd /usr/local/cuda-10.0/samples/bin/x86_64/linux/release
 ./bandwidthTest
 #After test feel free to remove built samples.
 
-1.2 Install cuDNN 7.3.1 (7.4.2) (download 4 files:1tgz+3deb)
+1.2 Install cuDNN 7.4.2 (download 4 files:1tgz+3deb)
 
 #Run tar:
 tar -xf cudnn-10.0-linux-x64-v7.4.2.24.tgz
@@ -65,9 +65,9 @@ sudo cp -R cuda/include/* /usr/local/cuda-10.0/include
 sudo cp -R cuda/lib64/* /usr/local/cuda-10.0/lib64
 
 #Run following commands in he folders with deb files:
-sudo dpkg -i libcudnn7_7.3.0.29-1+cuda10.0_amd64.deb
-sudo dpkg -i libcudnn7-dev_7.3.0.29-1+cuda10.0_amd64.deb
-sudo dpkg -i libcudnn7-doc_7.3.0.29-1+cuda10.0_amd64.deb
+#sudo dpkg -i libcudnn7_7.3.0.29-1+cuda10.0_amd64.deb
+#sudo dpkg -i libcudnn7-dev_7.3.0.29-1+cuda10.0_amd64.deb
+#sudo dpkg -i libcudnn7-doc_7.3.0.29-1+cuda10.0_amd64.deb
 
 _____2019.8.11 Update_____
 sudo dpkg -i libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb 
