@@ -1,0 +1,124 @@
+Activate the virtualenv environment: (tensorflow)$
+
+#Python2: 
+source ~/venv2/bin/activate 
+cd /home/zachary/venv2/lib/python2.7/site-packages/tensorflow/models/research/
+
+#Python3:
+source ~/venv/bin/activate 
+cd /home/zachary/venv/lib/python3.5/site-packages/tensorflow/models/research/
+
+##################Skip below#########################
+编译Protobuf，进入tensorflow/models/research 
+protoc object_detection/protos/*.proto --python_out=.
+在当前目录下，添加slim环境变量
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+测试目标检测API是否安装成功，下图中的红框表示安装成功
+##################Skip below#########################
+
+python object_detection/builders/model_builder_test.py
+
+cd object_detection/trafficsign
+数据准备：
+labelImg:xmlcd
+python xml_to_csv.py
+生成训练及验证用的train.record与test.record
+
+generate_tfrecord.py:
+# TO-DO replace this with label map
+def class_text_to_int(row_label):
+    if row_label == 'Steel_Pole':
+        return 1
+    elif row_label == 'Wood_Pole':
+        return 2
+    else:
+        None
+
+python generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record
+python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/test.record
+
+
+training folder files:
+(ssd_mobilenet_v1_pets.config: configure 5 paths. 	
+object-detection.pbtxt:	
+item {
+  id: 1
+  name: 'Steel_Pole'
+}...
+model.ckpt* 3 files)
+
+training:
+# From the tensorflow/models/research/ directory
+python object_detection/train.py \
+--logtostderr \
+--pipeline_config_path=object_detection/trafficsign/training/ssd_mobilenet_v1_pets.config \
+--train_dir=object_detection/trafficsign/training
+
+测试模型eval model：
+(eval_config: {
+  num_examples: 3
+})?????r5
+python object_detection/eval.py \
+    --logtostderr \
+    --pipeline_config_path=object_detection/trafficsign/training/ssd_mobilenet_v1_pets.config \
+    --checkpoint_dir=object_detection/trafficsign/training \
+    --eval_dir=object_detection/trafficsign/training
+
+#lanuch directly(non-venv):
+tensorboard --logdir=/home/zachary/venv/lib/python3.6/site-packages/tensorflow/models/research/object_detection/trafficsign/training
+
+/home/zachary/tensorflow/lib/python2.7/site-packages/tensorflow/models/research/object_detection
+Freeze Model模型导出：object_detection目录下还提供了export_inference_graph.py
+
+python export_inference_graph.py \
+--input_type image_tensor \
+--pipeline_config_path /home/zachary/venv/lib/python3.5/site-packages/tensorflow/models/research/object_detection/trafficsign/training/ssd_mobilenet_v1_pets.config \
+--trained_checkpoint_prefix /home/zachary/venv/lib/python3.5/site-packages/tensorflow/models/research/object_detection/trafficsign/training/model.ckpt-2154 \
+--output_directory /home/zachary/venv/lib/python3.5/site-packages/tensorflow/models/research/object_detection/trafficsign/training/result2154
+
+调用生成模型：
+jupyter notebook
+/home/zachary/venv/lib/python3.6/site-packages/tensorflow/models/research/object_detection/SignDectect.ipynb
+
+Nvidia:info
+nvidia-smi
+
+Cuda:(old)
+sudo apt-get autoremove --purge cuda
+sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda
+nvcc -1
+
+cuDNN:(old)
+sudo dpkg -i libcudnn7_7.0.3.11-1+cuda9.0_amd64.deb
+
+New install instruction: Cuda_9.1 Cudnn_7.2
+# Add NVIDIA package repository
+sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub
+wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+sudo apt install ./cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1604_1.0.0-1_amd64.deb
+sudo apt update
+
+# Install CUDA and tools. Include optional NCCL 2.x
+sudo apt install cuda9.0 cuda-cublas-9-0 cuda-cufft-9-0 cuda-curand-9-0 \
+    cuda-cusolver-9-0 cuda-cusparse-9-0 libcudnn7=7.2.1.38-1+cuda9.0 \
+    libnccl2=2.2.13-1+cuda9.0 cuda-command-line-tools-9-0
+
+# Optional: Install the TensorRT runtime (must be after CUDA install)
+sudo apt update
+sudo apt install libnvinfer4=4.1.2-1+cuda9.0
+
+Software requirements
+The following NVIDIA® software must be installed on your system:
+
+NVIDIA® GPU drivers —CUDA 9.0 requires 384.x or higher.
+CUDA® Toolkit —TensorFlow supports CUDA 9.0.
+CUPTI ships with the CUDA Toolkit.
+cuDNN SDK (>= 7.2)
+(Optional) NCCL 2.2 for multiple GPU support.
+(Optional) TensorRT 4.0 to improve latency and throughput for inference on some models.
+
