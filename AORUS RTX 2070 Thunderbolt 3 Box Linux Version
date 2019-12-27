@@ -1,0 +1,18 @@
+For Ubuntu 16.04: 
+Directory: 
+/usr/share/doc/xserver-xorg-video-intel-hwe-16.04
+Edit xorg.conf file: 
+
+Section "Module"
+ Load "modesetting"
+EndSection
+
+Section "Device"
+ Identifier "nvidia"
+ Driver "nvidia"
+ BusID "PCI:6:0:0"
+ Option "AllowEmptyInitialConfiguration"
+ Option "AllowExternalGpus"
+EndSection
+
+
