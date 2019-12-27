@@ -3,6 +3,8 @@ tensorflow-2.0.0	2.7, 3.3-3.7	GCC 7.3.1	Bazel 0.26.1	7.4	10.0
 tensorflow_gpu-1.14.0	2.7, 3.3-3.7	GCC 4.8	Bazel 0.24.1	7.4	10.0
 tensorflow_gpu-1.13.1	2.7, 3.3-3.7	GCC 4.8	Bazel 0.19.2	7.4	10.0
 
+0 Install Lastest Nvidia Driver
+
 
 1 Install CUDA 10.0 + cuDNN 7.4.2 + NCCL default version + TensorFlow 1.13.2 + Python3.6
 
@@ -16,6 +18,25 @@ To remove NVIDIA Drivers:
 $ sudo apt-get --purge remove "*nvidia*"
 Only Cuda 10.0 supported
 
+1.1 Install Cuda 10.0 (---Updated on Dec-27-2019)
+1.1.1 Install gcc: 
+sudo apt-get install gcc
+
+1.1.2 Download package. Linux / x86_64 / Ubuntu / 18.04 / run file (This is Good!!!)
+1.1.3 Install CUDA by running following commands
+Install Graphics Driver for Linux 410.48?     No
+Install CUDA 10.0 Toolkit?      Yes
+Enter Toolkit Location       /usr/local/cuda-10.0 
+All the other options are default. 
+
+1.1.4 After installation is complete, add PATH variable by adding following line to the bashrc by running
+vim ~/.bashrc
+export CUDA_HOME=/usr/local/cuda-10.0
+export LD_LIBRARY_PATH=${CUDA_HOME}/lib64
+export PATH=${CUDA_HOME}/bin:${PATH}
+
+
+---------------------------Skip this below---------------------------
 1.1 Install CUDA 10.0 (This step will install nvidia driver aotumatically)
 1.1.1 Install gcc: 
 sudo apt-get install gcc
@@ -38,6 +59,11 @@ export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 export PATH="$PATH:$HOME/bin"
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 #at the end of file. Save and exit.
+---------------------------Skip this above---------------------------
+
+
+
+
 
 1.1.5 Check driver version and CUDA toolkit to ensure that everything went well
 cat /proc/driver/nvidia/version
