@@ -4,7 +4,7 @@ tensorflow_gpu-1.14.0	2.7, 3.3-3.7	GCC 4.8	Bazel 0.24.1	7.4	10.0
 tensorflow_gpu-1.13.1	2.7, 3.3-3.7	GCC 4.8	Bazel 0.19.2	7.4	10.0
 
 0 Install Lastest Nvidia Driver
-
+https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04
 
 1 Install CUDA 10.0 + cuDNN 7.4.2 + NCCL default version + TensorFlow 1.13.2 + Python3.6
 
