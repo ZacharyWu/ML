@@ -172,11 +172,12 @@ export PATH="$PATH:$HOME/bin"
 
 3 Build from source (https://www.tensorflow.org/install/source?hl=zh_cn)
 
-3.1 Install Python and the TensorFlow package dependencies
+3.1 Install Python3 (recommand) and the TensorFlow package dependencies
 sudo apt install python-dev python-pip  # or python3-dev python3-pip
-pip install -U --user pip six numpy wheel setuptools mock future>=0.17.1
-pip install -U --user keras_applications==1.0.6 --no-deps
-pip install -U --user keras_preprocessing==1.0.5 --no-deps
+
+pip install -U --user pip six numpy wheel setuptools mock 'future>=0.17.1'
+pip install -U --user keras_applications --no-deps
+pip install -U --user keras_preprocessing --no-deps
 
 3.2 Download the TensorFlow source code and Build
 3.2.1 Download source codes.
