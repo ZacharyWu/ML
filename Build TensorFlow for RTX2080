@@ -98,7 +98,7 @@ cuDNN Library for Linux 这是安装包。
 
 都下载完后，在下载的目录下打开终端，输入：
 
-$ tar -xzvf cudnn-10.0-linux-xxxxx .tgz
+$ tar -xzvf cudnn-10.0-linux-x64-v7.4.2.24.tgz
 
 解压后得到
 
