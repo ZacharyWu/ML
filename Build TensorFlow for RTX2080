@@ -148,16 +148,19 @@ NCCL is used to handle calculations on multiple GPU simultaneously. If you will 
 sudo dpkg -i nccl-repo-<version>.deb
 sudo apt install libnccl2 libnccl-dev
 
-2 Install Bazel 0.18 (0.28)
+2 Install Bazel 0.19.2 (---Updated on Jan-02-2020)
 
 #Step 1: Install required packages
-sudo apt-get install pkg-config zip g++ zlib1g-dev unzip python (old 0.21, use this)
-sudo apt-get install pkg-config zip g++ zlib1g-dev unzip python3
+sudo apt install g++ unzip zip 
+
 #Step 2: Download Bazel
 Next, download the Bazel binary installer named bazel-<version>-installer-linux-x86_64.sh from the Bazel releases page on GitHub.
+https://github.com/bazelbuild/bazel/releases/tag/0.19.2
+
 #Step 3: Run the installer
-chmod +x bazel-0.18.0-installer-linux-x86_64.sh
-./bazel-0.18.0-installer-linux-x86_64.sh --user
+chmod +x bazel-0.19.2-installer-linux-x86_64.sh
+./bazel-0.19.2-installer-linux-x86_64.sh --user
+
 #Step 4: Set up your environment
 export PATH="$PATH:$HOME/bin"
 #You can also add this command to your ~/.bashrc file.
