@@ -12,6 +12,8 @@ using Python3 and pip3
 ---updated: 2019.8.11
 #Install Python 3.7 on Ubuntu 18.04:
 https://linuxize.com/post/how-to-install-python-3-7-on-ubuntu-18-04/
+#Install the packages necessary to build Python source:
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 
 Ubuntu
 To remove CUDA Toolkit:
