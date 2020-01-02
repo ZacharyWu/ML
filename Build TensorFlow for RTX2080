@@ -91,9 +91,32 @@ cd /usr/local/cuda-10.0/samples/bin/x86_64/linux/release
 #After test feel free to remove built samples.
 ---------------------------Skip this above--------------------------
 
-1.2 Install cuDNN 7.4.2 (download 4 files:1tgz+3deb)
+1.2 Install cuDNN 7.4.2 (download run file)
 
-#Run tar:
+然后选择对应CUDA10.0的cuDNN 7.4.2 下载
+cuDNN Library for Linux 这是安装包。
+
+都下载完后，在下载的目录下打开终端，输入：
+
+$ tar -xzvf cudnn-10.0-linux-xxxxx .tgz
+
+解压后得到
+
+cuda/include/cudnn.h
+cuda/NVIDIA_SLA_cuDNN_Support.txt
+cuda/lib64/libcudnn.so
+cuda/lib64/libcudnn.so.7
+cuda/lib64/libcudnn.so.7.4.2
+cuda/lib64/libcudnn_static.a
+
+然后输入：
+
+cp cuda/lib64/* /usr/local/cuda-10.0/lib64/
+cp cuda/include/* /usr/local/cuda-10.0/include/
+
+---------------------------Skip this below------------------------
+4 files:1tgz+3deb
+#Run tar: 
 tar -xf cudnn-10.0-linux-x64-v7.4.2.24.tgz
 sudo cp -R cuda/include/* /usr/local/cuda-10.0/include
 sudo cp -R cuda/lib64/* /usr/local/cuda-10.0/lib64
@@ -107,6 +130,7 @@ _____2019.8.11 Update_____
 sudo dpkg -i libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb 
 sudo dpkg -i libcudnn7-dev_7.4.2.24-1+cuda10.0_amd64.deb
 sudo dpkg -i libcudnn7-doc_7.4.2.24-1+cuda10.0_amd64.deb 
+---------------------------Skip this above--------------------------
 
 #The installation is completed. Let’s verify it by following instructions or run:
 cp -r /usr/src/cudnn_samples_v7/ $HOME
