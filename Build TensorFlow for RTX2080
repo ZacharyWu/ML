@@ -62,9 +62,6 @@ export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ---------------------------Skip this above---------------------------
 
 
-
-
-
 1.1.5 Check driver version and CUDA toolkit to ensure that everything went well
 cat /proc/driver/nvidia/version
 nvcc -V
@@ -72,6 +69,16 @@ nvcc -V
 "sudo reboot" Please.
 
 1.1.6 You might also want to build CUDA samples and run it. It will take a while. For that you need to jump to CUDA sample directory. For me it is 
+cd /usr/local/cuda-10.0/samples/1_Utilities/deviceQuery
+sudo make
+./deviceQuery
+
+cd ..
+cd bandwidthTest/
+sudo make
+./bandwidthTest 
+
+---------------------------Skip this below--------------------------
 cd /usr/local/cuda-10.0/samples 
 #and run 
 sudo make (make -k to build some packages skip others, which needs 3rd party library)
@@ -82,6 +89,7 @@ cd /usr/local/cuda-10.0/samples/bin/x86_64/linux/release
 #and 
 ./bandwidthTest
 #After test feel free to remove built samples.
+---------------------------Skip this above--------------------------
 
 1.2 Install cuDNN 7.4.2 (download 4 files:1tgz+3deb)
 
