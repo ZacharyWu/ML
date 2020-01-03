@@ -6,7 +6,7 @@ cd /home/zachary/venv2/lib/python2.7/site-packages/tensorflow/models/research/
 
 #Python3:
 source ~/venv/bin/activate 
-cd /home/zachary/venv/lib/python3.5/site-packages/tensorflow/models/research/
+cd /home/zachary/venv/lib/python3.6/site-packages/tensorflow/models/research/
 
 #Object Detection API: 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
