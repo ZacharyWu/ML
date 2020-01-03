@@ -209,6 +209,8 @@ Found possible Python library paths:
 Please input the desired Python library path to use.  Default is [/home/zachary/venv2/lib/python2.7/site-packages/tensorflow/models/research/slim]
 /usr/local/lib/python3.6/dist-packages
 
+For Details, refer to ConfigureTensorFlow1.13 + Python3 + cuDNN 7.4.2:
+https://github.com/ZacharyWu/ML/blob/master/ConfigureTensorFlow1.13%20%2B%20Python3%20%2B%20cuDNN%207.4.2
 
 ####################################### Optional ###########################################
 
