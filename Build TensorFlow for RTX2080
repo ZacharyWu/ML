@@ -215,12 +215,13 @@ https://github.com/ZacharyWu/ML/blob/master/ConfigureTensorFlow1.13%20%2B%20Pyth
 ####################################### Optional ###########################################
 
 3.2.2 Test it with bazel.
+cd tensorflow/
 bazel test -c opt -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/contrib/lite/... 
 #Well, it was processing about an hour on my machine. As a result I have about 60 failed test results but it doesn’t impact build process.
 
 ####################################### Optional ###########################################
 
-3.2.3 Bazel build
+3.2.3 Bazel build (cd tensorflow/)
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 
 
