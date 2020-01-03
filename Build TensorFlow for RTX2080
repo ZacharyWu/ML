@@ -212,7 +212,7 @@ Please input the desired Python library path to use.  Default is [/home/zachary/
 For Details, refer to ConfigureTensorFlow1.13 + Python3 + cuDNN 7.4.2:
 https://github.com/ZacharyWu/ML/blob/master/ConfigureTensorFlow1.13%20%2B%20Python3%20%2B%20cuDNN%207.4.2
 
-####################################### Optional ###########################################
+####################################### Optional Skip this ###########################################
 
 3.2.2 Test it with bazel.
 cd tensorflow/
@@ -221,7 +221,7 @@ bazel test -c opt -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/c
 
 ####################################### Optional ###########################################
 
-3.2.3 Bazel build (cd tensorflow/)
+3.2.3 Bazel build with GPU Support (cd tensorflow/)
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 
 
