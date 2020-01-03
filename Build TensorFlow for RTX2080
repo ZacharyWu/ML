@@ -213,10 +213,6 @@ For Details, refer to ConfigureTensorFlow1.13 + Python3 + cuDNN 7.4.2:
 https://github.com/ZacharyWu/ML/blob/master/ConfigureTensorFlow1.13%20%2B%20Python3%20%2B%20cuDNN%207.4.2
 
 
-#Install gcc 4.8:
-sudo apt remove gcc gcc-7 g++ g++-7
-sudo apt install gcc-4.8 g++-4.8
-
 ####################################### Optional Skip this ###########################################
 
 3.2.2 Test it with bazel.
@@ -228,7 +224,8 @@ bazel test -c opt -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/c
 
 3.2.3 Bazel build with GPU Support (cd tensorflow/)
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
-
+bazel build --config=opt --config=cuda --config=mkl //tensorflow/tools/pip_package:build_pip_package (use this one?)
+bazel build --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" --config=opt --config=cuda --config=mkl //tensorflow/tools/pip_package:build_pip_package
 
 3.2.4 Build the package and install TensorFlow. 
 #Step1 Build the package
