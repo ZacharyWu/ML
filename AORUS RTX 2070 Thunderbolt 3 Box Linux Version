@@ -16,3 +16,4 @@ Section "Device"
 EndSection
 
 
+sudo lshw -c video
