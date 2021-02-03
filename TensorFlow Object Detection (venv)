@@ -44,9 +44,9 @@ https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc
 protoc object_detection/protos/*.proto --python_out=.
 在当前目录下，添加slim环境变量
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-测试目标检测API是否安装成功，下图中的红框表示安装成功
 ##################Skip below#########################
 
+测试目标检测API是否安装成功，Ran 7 tests in 0.028s  OK (skipped=1)表示安装成功
 python object_detection/builders/model_builder_test.py
 
 cd object_detection/trafficsign
